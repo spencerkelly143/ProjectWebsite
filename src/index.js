@@ -1,12 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Home from './Home.js'
+import Project from './Project'
+import ProjectContainer from './ProjectContainer'
+import './index.scss'
+import './wrapper.css'
+import './scrollbar.scss'
+import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const App = withRouter(({location}) => (
+  <TransitionGroup>
+    <CSSTransition key={location.key}
+                  timeout={{ enter: 300, exit: 300 }}
+                  classNames='fade'>
+      <Switch location={location}>
+        <Route exact path="/">
+          <Project />
+        </Route>
+        <Route path="/project">
+          <ProjectContainer />
+        </Route>
+      </Switch>
+    </CSSTransition>
+  </TransitionGroup>
+))
+
+class Index extends React.Component{
+  render(){
+    return(
+      <Router>
+        <Home />
+        <App />
+      </Router>
+    )
+  }
+}
+ReactDOM.render(<Index />, document.getElementById('root'));

@@ -1,0 +1,25 @@
+body::-webkit-scrollbar {
+  width: 6px;
+  opacity: 0;
+  margin-right: 3px;
+    display: none;
+}
+
+body::-webkit-scrollbar-thumb{
+  padding: 1px;
+  background-color: #8693AB;
+  opacity: 0;
+  border-radius: 1px;
+  margin-right: 3px;
+    display: none;
+}
+
+body::-webkit-scrollbar-button{
+  display: none;
+}
+
+body::-webkit-scrollbar-track-piece{
+  background-color: #8DA1B9;
+  display: none;
+  opacity: 0;
+}
